@@ -1,0 +1,20 @@
+ 
+ <%= form_with(model: Message.new,id: dom_id(message)) do |form| %>
+    <%if message.errors.any? %>
+        <div  class=" alert alert-success alert-dismissible fade show col-sm-9" role="alert" id="errors-messages">
+            <h2><%= pluralize(message.errors.count, "error")%>dfddfdfdfd</h2>
+            <ul>
+                <% message.errors.each do |error|%>
+                    <li><%= error.full_message %></li>
+                <% end %>
+                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </ul>
+            
+        </div>
+    <% end %>
+  <div class="input-group mb-3">
+  <%= form.text_field :content, placeholder: 'Send a message', class: 'form-control' %>
+  <%= form.hidden_field :user_id,value: current_user.id %>
+  <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa-duotone fa-paper-plane-top"></i></button>
+  </div>
+  <% end %>

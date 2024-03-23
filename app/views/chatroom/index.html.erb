@@ -1,0 +1,12 @@
+<h1>Chatroom#index</h1>
+
+    <div class= "messages-container">
+        <%= turbo_stream_from "messages"%>
+        <turbo-frame id="messages"  >
+                <%= render @messages %>    
+           
+        </turbo-frame>    
+    </div>
+<%= turbo_frame_tag "tweet_form" do %>
+    <%= render "chatroom/form",message: Message.new %>
+ <% end %>
